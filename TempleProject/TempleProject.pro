@@ -10,7 +10,8 @@ SOURCES += \
         databaseapi.cpp \
         dbsevatypemodelfirebase.cpp \
         firebasedatabase.cpp \
-        main.cpp
+        main.cpp \
+        sevabookingviewmodel.cpp
 
 RESOURCES += qml.qrc
 
@@ -28,4 +29,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     databaseapi.h \
     dbsevatypemodelfirebase.h \
-    firebasedatabase.h
+    firebasedatabase.h \
+    sevabookingviewmodel.h
+
+DISTFILES +=

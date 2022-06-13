@@ -2,8 +2,12 @@ import QtQuick 2.14
 import QtQuick.Window 2.14
 
 Window {
-    width: 640
-    height: 480
+    id:root
+    width: screen.width
+    height: screen.height
     visible: true
-    title: qsTr("Hello World")
+    visibility: "Maximized"
+    title: qsTr("Temple Project")
+    SevaBookingUI{}
+
 }
