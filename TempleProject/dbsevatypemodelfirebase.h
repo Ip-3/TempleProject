@@ -15,9 +15,9 @@ public:
     DBSevaTypeViewModelFirebase();
     ~DBSevaTypeViewModelFirebase();
 
-    QString selectedSevaListData( QString data);
+//    QString selectedSevaListData( QString data);
     void processData(QJsonObject data,QJsonObject data2,QJsonObject data3,QJsonObject data4,QJsonObject data5,QJsonObject data6);
-    void processSevaList();
+    void processSevaList(QString data);
 
 public slots:
     void catchdatafromapi(QString data);
@@ -34,6 +34,8 @@ signals:
     void rashiInformatoion(QList<QString> rashiList);
     void bankInformatoion(QList<QString> bankList);
     void sevaListInformation(QList<QString> listdata);
+
+    void sevaNameListInformation(QList<QString> namelistdata);
     //    void connecttoapi2(QJsonObject data);
 
 private:

@@ -4,7 +4,7 @@
 SevaBookingViewModel::SevaBookingViewModel(QObject *parent)
     : QObject{parent}
 {
-    DBSevaTypeViewModelFirebase *dbsvmf = new DBSevaTypeViewModelFirebase;
+    dbsvmf = new DBSevaTypeViewModelFirebase;
     connect(dbsvmf,&DBSevaTypeViewModelFirebase::userInformationPersonName,this,&SevaBookingViewModel::setUserName);
     connect(dbsvmf,&DBSevaTypeViewModelFirebase::userInformationEmail,this,&SevaBookingViewModel::setEmail);
     connect(dbsvmf,&DBSevaTypeViewModelFirebase::userInformationGotra,this,&SevaBookingViewModel::setGotra);
@@ -15,9 +15,10 @@ SevaBookingViewModel::SevaBookingViewModel(QObject *parent)
     connect(dbsvmf,&DBSevaTypeViewModelFirebase::rashiInformatoion,this,&SevaBookingViewModel::setRashi);
     connect(dbsvmf,&DBSevaTypeViewModelFirebase::bankInformatoion,this,&SevaBookingViewModel::setBanklist);
     connect(dbsvmf,&DBSevaTypeViewModelFirebase::sevaListInformation,this,&SevaBookingViewModel::setSevalist);
+    connect(dbsvmf,&DBSevaTypeViewModelFirebase::sevaNameListInformation,this,&SevaBookingViewModel::setsevaValueNameList);
+
 
     qDebug()<<Q_FUNC_INFO<<Qt::endl;
-
 
 
 }
@@ -27,13 +28,15 @@ SevaBookingViewModel::~SevaBookingViewModel()
 }
 
 
-//QString SevaBookingViewModel::datafromqml( QString data)
-//{
-//    qDebug()<<Q_FUNC_INFO<<Qt::endl;
-//    qDebug()<<"Data from QML" <<data;
+QString SevaBookingViewModel::datafromqml( QString data)
+{
+    qDebug()<<Q_FUNC_INFO<<Qt::endl;
+    qDebug()<<"Data from QML" <<data;
+    dbsvmf->processSevaList(data);
 //    emit sendqmldatatodatype(data);
 
-//}
+
+}
 
 const QString &SevaBookingViewModel::userName() const
 {
@@ -219,4 +222,17 @@ void SevaBookingViewModel::setSevalist(const QList<QString> &newSevalist)
     m_sevalist = newSevalist;
     qDebug()<<Q_FUNC_INFO<<m_sevalist<<Qt::endl;
     emit sevalistChanged();
+}
+
+const QList<QString> &SevaBookingViewModel::sevaValueNameList() const
+{
+    return m_sevaValueNameList;
+}
+
+void SevaBookingViewModel::setsevaValueNameList(const QList<QString> &newsevaValueNameList)
+{
+    if (m_sevaValueNameList == newsevaValueNameList)
+        return;
+    m_sevaValueNameList = newsevaValueNameList;
+    emit sevaValueNameListChanged();
 }

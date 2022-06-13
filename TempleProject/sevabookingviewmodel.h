@@ -1,6 +1,7 @@
 #ifndef SEVABOOKINGVIEWMODEL_H
 #define SEVABOOKINGVIEWMODEL_H
 
+#include "dbsevatypemodelfirebase.h"
 #include <QObject>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -9,10 +10,12 @@
 class SevaBookingViewModel : public QObject
 {
     Q_OBJECT
+    DBSevaTypeViewModelFirebase *dbsvmf;
+
 public:
     explicit SevaBookingViewModel(QObject *parent = nullptr);
     ~SevaBookingViewModel();
-//    Q_INVOKABLE QString datafromqml( QString data);
+    Q_INVOKABLE QString datafromqml( QString data);
 
     const QString &userName() const;
     void setUserName(const QString &newUserName);
@@ -47,6 +50,9 @@ public:
     const QList<QString> &sevalist() const;
     void setSevalist(const QList<QString> &newSevalist);
 
+    const QList<QString> &sevaValueNameList() const;
+    void setsevaValueNameList(const QList<QString> &newsevaValueNameList);
+
 public slots:
 //    void catchdatafomdbseva(QJsonObject data,QJsonObject data2,QJsonObject data3,QJsonObject data4,QJsonObject data5,QJsonObject data6);
 
@@ -73,8 +79,9 @@ signals:
     void sevaTimeChanged();
     void noteChanged();
     void sevalistChanged();
+    void sendqmldatatodatype(QString);
+    void sevaValueNameListChanged();
 
-//    void sendqmldatatodatype(QString);
 private:
     QString  m_userName;
     QString  m_email;
@@ -90,6 +97,8 @@ private:
     QString  m_note;
     QDate m_datees;
     QList <QString> m_sevalist;
+    QList<QString> m_sevaValueNameList;
+
     Q_PROPERTY(QString userName READ userName WRITE setUserName NOTIFY userNameChanged)
     Q_PROPERTY(QString email READ email WRITE setEmail NOTIFY emailChanged)
     Q_PROPERTY(QString phoneNumber READ phoneNumber WRITE setPhoneNumber NOTIFY phoneNumberChanged)
@@ -101,6 +110,7 @@ private:
     Q_PROPERTY(QTime sevaTime READ sevaTime WRITE setSevaTime NOTIFY sevaTimeChanged)
     Q_PROPERTY(QString note READ note WRITE setNote NOTIFY noteChanged)
     Q_PROPERTY(QList<QString> sevalist READ sevalist WRITE setSevalist NOTIFY sevalistChanged)
+    Q_PROPERTY(QList<QString> sevaValueNameList READ sevaValueNameList WRITE setsevaValueNameList NOTIFY sevaValueNameListChanged)
 };
 
 #endif // SEVABOOKINGVIEWMODEL_H

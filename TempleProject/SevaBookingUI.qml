@@ -140,10 +140,14 @@ Item {
                             }
                             onClicked:
                             {
+                                console.log("clickeddddddddddddddddddddddddddddddd");
+
                                 clickk = true
+                                console.log("************The data in txtvv.txt = ",txtvv.text);
+                                console.log("The value of index is = ",index)
                                 propertyvar.datafromqml(txtvv.text)
                                 sevatextdropdown.currentIndex=index
-                                sevanamelist.model=propertyvar.sevavauenamelist;
+                                sevanamelist.model=propertyvar.sevaValueNameList;
                             }
                         }
                     }
@@ -173,7 +177,7 @@ Item {
                         clip:true
                         //                        anchors.top: sevatextdropdown.bottom
                         anchors.topMargin: 10
-                        model: propertyvar.sevavauenamelist.length
+                        model: propertyvar.sevaValueNameList.length
 
                         delegate:
                             Button{
@@ -189,7 +193,7 @@ Item {
                             Text{
                                 id:txtvv2
                                 anchors.centerIn: parent
-                                text: propertyvar.sevavauenamelist[index]
+                                text: propertyvar.sevaValueNameList[index]
                             }
                             onClicked:
                             {
