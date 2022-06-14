@@ -124,7 +124,7 @@ Item {
                         delegate:
                             Button{
                             id:abc
-                            anchors.horizontalCenter: parent.horizontalCenter
+//                            anchors.horizontalCenter: parent.horizontalCenter
                             property bool currentitemstatus;
                             currentitemstatus: ListView.isCurrentItem
                             width: dropdownRectangle.width-dropdownRectangle.border.width*2
@@ -140,14 +140,10 @@ Item {
                             }
                             onClicked:
                             {
-                                console.log("clickeddddddddddddddddddddddddddddddd");
-
                                 clickk = true
-                                console.log("************The data in txtvv.txt = ",txtvv.text);
-                                console.log("The value of index is = ",index)
-                                propertyvar.datafromqml(txtvv.text)
+                                propertyvar.datafromqml(txtvv.text)                              
                                 sevatextdropdown.currentIndex=index
-                                sevanamelist.model=propertyvar.sevaValueNameList;
+                                sevanamelist.model=propertyvar.sevaValueNameList.length;
                             }
                         }
                     }
@@ -177,13 +173,13 @@ Item {
                         clip:true
                         //                        anchors.top: sevatextdropdown.bottom
                         anchors.topMargin: 10
-                        model: propertyvar.sevaValueNameList.length
+//                        model: propertyvar.sevaValueNameList.length
 
                         delegate:
                             Button{
                             property bool currentitemstatus2;
                             currentitemstatus2: ListView.isCurrentItem
-                            anchors.horizontalCenter: parent.horizontalCenter
+//                            anchors.horizontalCenter: parent.horizontalCenter
                             width: dropdownRectangle.width-dropdownRectangle.border.width*2
                             height: 30
                             background: Rectangle{
@@ -348,10 +344,11 @@ Item {
                                         id:sevanamerect02;width:columnrectrow01.width/2.2;height:columnrectrow01.height/9;color:"#FFFFFF"
                                         border.color : "#AC39D1"
                                         border.width :1
-                                        TextInput{
+                                        Text {
                                             id: sevanameop
                                             text:""
                                             clip: true
+//                                            wrapMode: sevanameop.text
                                             font.pointSize: 10
                                             font.family: "cursive"
                                             anchors.verticalCenter:  parent.verticalCenter
@@ -1116,7 +1113,7 @@ Item {
 //                                    propertyvar.phoneNumber = mobileop.text
 //                                    propertyvar.note = noteop.text
 //                                    propertyvar.reciptNumber = receiptop.text
-                                    propertyvar.sevalist = sevanameop.text
+//                                    propertyvar.sevalist = sevanameop.text
                                     //                                                                        propertyvar.nakshatra = nakshatraop.text;
                                     //                                                                        propertyvar.sevaPrice = sevachargesop.text;
 //                                    propertyvar.sevaDate = sevadaterectop.text;

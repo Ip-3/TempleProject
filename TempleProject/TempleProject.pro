@@ -9,6 +9,7 @@ QT       += network
 SOURCES += \
         databaseapi.cpp \
         dbsevatypemodelfirebase.cpp \
+        dbsevatypemodelinterface.cpp \
         firebasedatabase.cpp \
         main.cpp \
         sevabookingviewmodel.cpp
@@ -29,6 +30,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     databaseapi.h \
     dbsevatypemodelfirebase.h \
+    dbsevatypemodelinterface.h \
     firebasedatabase.h \
     sevabookingviewmodel.h
 

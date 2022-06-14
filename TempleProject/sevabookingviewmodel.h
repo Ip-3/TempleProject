@@ -10,7 +10,7 @@
 class SevaBookingViewModel : public QObject
 {
     Q_OBJECT
-    DBSevaTypeViewModelFirebase *dbsvmf;
+    DBSevaTypeViewModelFirebase *dbsvmf = new DBSevaTypeViewModelFirebase;
 
 public:
     explicit SevaBookingViewModel(QObject *parent = nullptr);
@@ -51,17 +51,16 @@ public:
     void setSevalist(const QList<QString> &newSevalist);
 
     const QList<QString> &sevaValueNameList() const;
-    void setsevaValueNameList(const QList<QString> &newsevaValueNameList);
+     void setsevaValueNameList(const QList<QString> &newsevaValueNameList);
 
 public slots:
 //    void catchdatafomdbseva(QJsonObject data,QJsonObject data2,QJsonObject data3,QJsonObject data4,QJsonObject data5,QJsonObject data6);
-
 //    void userInformationDate(QDate e_date);
 //    void userInformationEmail (QString e_email);
 //    void userInformationGotra (QList<QString> e_gotra);
 //    void userInformationMobile (QString e_mobile);
 //    void userInformationNakshatra (QList<QString> e_nakshatra);
-//    void   userInformationPersonName (QString e_PresonName);
+//    void userInformationPersonName (QString e_PresonName);
 //    void nakshatraInformatoion(QList<QString> nakshatraList);
 //    void gotraInformatoion(QList<QString> gotraList);
 //    void rashiInformatoion(QList<QString> rashiList);
@@ -79,7 +78,7 @@ signals:
     void sevaTimeChanged();
     void noteChanged();
     void sevalistChanged();
-    void sendqmldatatodatype(QString);
+//    void sendqmldatatodatype(QString);
     void sevaValueNameListChanged();
 
 private:

@@ -10,7 +10,6 @@
 #include <QTextCodec>
 #include <QJsonDocument>
 #include <QJsonObject>
-//#include <databaseapi.h>
 FireBaseDataBase::FireBaseDataBase(QObject *parent) : QObject(parent)
 {
     qDebug()<<Q_FUNC_INFO<<Qt::endl;
@@ -36,7 +35,7 @@ FireBaseDataBase::~FireBaseDataBase()
 void FireBaseDataBase::networkReplyReadyRead()
 {
     qDebug()<<Q_FUNC_INFO<<Qt::endl;
-    qDebug()<<QSslSocket::supportsSsl() << QSslSocket::sslLibraryBuildVersionString() << QSslSocket::sslLibraryVersionString();
+//    qDebug()<<QSslSocket::supportsSsl() << QSslSocket::sslLibraryBuildVersionString() << QSslSocket::sslLibraryVersionString();
     m_dataasbyte = m_networkreply->readAll();
     m_dataasastring = QTextCodec::codecForLocale()->toUnicode(m_dataasbyte);
     emit getUserData(m_dataasastring);

@@ -6,16 +6,19 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonValue>
+#include "dbsevatypemodelinterface.h"
 
-class DBSevaTypeViewModelFirebase:public QObject
+class DBSevaTypeViewModelFirebase:public QObject, DBSevaTypeModelInterface
 {
 
     Q_OBJECT
-public:
-    DBSevaTypeViewModelFirebase();
+    DBSEVATYPEMODELINTERFACE_H
+
+    public:
+        DBSevaTypeViewModelFirebase();
     ~DBSevaTypeViewModelFirebase();
 
-//    QString selectedSevaListData( QString data);
+    //    QString selectedSevaListData( QString data);
     void processData(QJsonObject data,QJsonObject data2,QJsonObject data3,QJsonObject data4,QJsonObject data5,QJsonObject data6);
     void processSevaList(QString data);
 
@@ -39,9 +42,7 @@ signals:
     //    void connecttoapi2(QJsonObject data);
 
 private:
-    //    QList<QString> l_SNo,l_PersonId,l_SevaType,l_SevaName,l_Quantity,l_SevaDateS,l_SevaMonthS,l_SevaYearS ,l_SevaDate,l_ReciptDateS,l_ReciptMonthS,l_ReciptYearS,l_Reciptdate,l_SevaCost,l_AddCost,l_TotalCost,l_Note;
-    //    QString PersonName,PersonGotra, PersonNakshtra, PersonMobile,PersonId,PersonSevaname,SevaDate,Note;
-    //    QString *p_dataget;
+
     QJsonDocument jsonDocument;
     QJsonObject jsonObject;
     QJsonObject Sevadetails;
@@ -64,14 +65,14 @@ private:
     QString  p_email;
     QString  p_phoneNumber;
     QString  p_reciptNumber;
-    QList <QString>  p_nakshatra;
-    QList <QString>   p_gotra;
-    QList <QString>   p_rashi;
-    QList <QString>  p_bankList;
-    unsigned  p_sevaPrice;
-    QDate  p_sevaDate;
-    QTime  p_sevaTime;
-    QString  p_note;
+    QList <QString> p_nakshatra;
+    QList <QString> p_gotra;
+    QList <QString> p_rashi;
+    QList <QString> p_bankList;
+    unsigned p_sevaPrice;
+    QDate p_sevaDate;
+    QTime p_sevaTime;
+    QString p_note;
     QDate p_currentDate;
     QList <QString> p_sevaList;
 
@@ -93,6 +94,9 @@ private:
     QString p_sevaListHit;
 
     QList<QString> p_sevanameslistdata;
+
+    QString sevasublistkeyvalue;
+    QList<QString>  sevasublistvalue;
 
 };
 
