@@ -143,7 +143,7 @@ Item {
                                 clickk = true
                                 propertyvar.datafromqml(txtvv.text)                              
                                 sevatextdropdown.currentIndex=index
-                                sevanamelist.model=propertyvar.sevaValueNameList.length;
+                                sevanamelist.model=propertyvar.sevaValueNameList;
                             }
                         }
                     }
@@ -190,12 +190,16 @@ Item {
                                 id:txtvv2
                                 anchors.centerIn: parent
                                 text: propertyvar.sevaValueNameList[index]
+//                                text: propertyvar.sevaValueNameList
+
                             }
                             onClicked:
                             {
                                 clickk2 = true
                                 sevanamelist.currentIndex=index
                                 sevanameop.text = txtvv2.text
+                                propertyvar.pricedatafromqml(sevanameop.text)
+
                             }
                         }
                     }
@@ -516,7 +520,7 @@ Item {
                                         TextInput {
                                             id: sevachargesop
                                             anchors.fill: parent
-                                            text: ""
+                                            text: propertyvar.sevaPrice
                                             clip: true
                                             font.pointSize: 10
                                             font.family: "cursive"

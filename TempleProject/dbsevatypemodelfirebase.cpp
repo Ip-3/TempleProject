@@ -164,31 +164,48 @@ void DBSevaTypeViewModelFirebase::processSevaList(QString data)
     p_sevaListHit = data;
     QVariantMap :: Iterator it2;
     QMap<QString,QVariant> :: Iterator it3;
-    //    auto aaa = p_sevaListVariantmap.keys().
-    //    qDebug()<<"Experinment"<<aaa;
     for(it2=p_sevaListVariantmap.begin();it2!=p_sevaListVariantmap.end();it2++)
     {
 
         p_keyvalues = it2.key();
-        auto values = it2.value().toMap();
+        subsevavalues = it2.value().toMap();
         if(p_keyvalues==p_sevaListHit)
         {
             sevasublistvalue.clear();
-            for(it3=values.begin();it3!=values.end();it3++)
+            for(it3=subsevavalues.begin();it3!=subsevavalues.end();it3++)
             {
-                 sevasublistkeyvalue = it3.key();
-                 sevasublistvalue.append(sevasublistkeyvalue);
+                sevasublistkeyvalue = it3.key();
+                sevasublistvalue.append(sevasublistkeyvalue);
+
+
             }
             emit sevaNameListInformation(sevasublistvalue);
         }
+    }
+}
 
-        //            qDebug()<<"Keysss"<<p_keyvalues;
-        ////            for(it3=aaa.begin();it3!=aaa.end();it3++)
-        ////            {
-        ////                auto a = it3->toString();
-        //                p_sevanameslistdata=it2.value().toStringList();
-        ////                qDebug()<<"Valuess"<<p_sevanameslistdata;
-        ////            }
+void DBSevaTypeViewModelFirebase::processSevaPriceData(QString data)
+{
+    p_sevaCostHit = data;
+    QVariantMap :: Iterator it2;
+    QMap<QString,QVariant> :: Iterator it3;
+    for(it2=p_sevaListVariantmap.begin();it2!=p_sevaListVariantmap.end();it2++)
+    {
+
+        p_keyvalues = it2.key();
+        subsevavalues = it2.value().toMap();
+        if(p_keyvalues==p_sevaListHit)
+        {
+            sevasublistvalue.clear();
+            for(it3=subsevavalues.begin();it3!=subsevavalues.end();it3++)
+            {
+                auto aaa = it3.key();
+                if(aaa==p_sevaCostHit){
+                     priceInfo = it3.value().toUInt();
+                }
+            }
+            emit sevaPriceInformation(priceInfo);
+        }
     }
 }
 

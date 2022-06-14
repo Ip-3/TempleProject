@@ -21,6 +21,7 @@ class DBSevaTypeViewModelFirebase:public QObject, DBSevaTypeModelInterface
     //    QString selectedSevaListData( QString data);
     void processData(QJsonObject data,QJsonObject data2,QJsonObject data3,QJsonObject data4,QJsonObject data5,QJsonObject data6);
     void processSevaList(QString data);
+    void processSevaPriceData(QString data);
 
 public slots:
     void catchdatafromapi(QString data);
@@ -39,6 +40,7 @@ signals:
     void sevaListInformation(QList<QString> listdata);
 
     void sevaNameListInformation(QList<QString> namelistdata);
+    void sevaPriceInformation(unsigned priceData);
     //    void connecttoapi2(QJsonObject data);
 
 private:
@@ -92,11 +94,16 @@ private:
     QList<QString> p_sevavauenamelist;
 
     QString p_sevaListHit;
+    QString  p_sevaCostHit;
 
     QList<QString> p_sevanameslistdata;
 
     QString sevasublistkeyvalue;
     QList<QString>  sevasublistvalue;
+    QMap<QString,QVariant> subsevavalues;
+
+    unsigned priceInfo;
+
 
 };
 

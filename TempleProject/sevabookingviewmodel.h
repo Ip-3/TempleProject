@@ -16,6 +16,7 @@ public:
     explicit SevaBookingViewModel(QObject *parent = nullptr);
     ~SevaBookingViewModel();
     Q_INVOKABLE QString datafromqml( QString data);
+     Q_INVOKABLE QString pricedatafromqml( QString data);
 
     const QString &userName() const;
     void setUserName(const QString &newUserName);
