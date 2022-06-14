@@ -191,7 +191,6 @@ void DBSevaTypeViewModelFirebase::processSevaPriceData(QString data)
     QMap<QString,QVariant> :: Iterator it3;
     for(it2=p_sevaListVariantmap.begin();it2!=p_sevaListVariantmap.end();it2++)
     {
-
         p_keyvalues = it2.key();
         subsevavalues = it2.value().toMap();
         if(p_keyvalues==p_sevaListHit)

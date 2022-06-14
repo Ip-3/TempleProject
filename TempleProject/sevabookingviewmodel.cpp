@@ -31,6 +31,8 @@ SevaBookingViewModel::~SevaBookingViewModel()
 }
 
 
+
+
 QString SevaBookingViewModel::datafromqml( QString data)
 {
     //    qDebug()<<Q_FUNC_INFO<<Qt::endl;
