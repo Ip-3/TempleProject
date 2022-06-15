@@ -6,7 +6,7 @@
 #include <QObject>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QDate>
+#include <QString>
 
 class SevaBookingViewModel : public QObject
 {
@@ -42,6 +42,20 @@ public:
     const unsigned &extraPrice() const;
     void setExtraPrice(const unsigned &newExtraPrice);
 
+    const unsigned &countOfPeople() const;
+    void setCountOfPeople(const unsigned &newCountOfPeople);
+
+    const QString &sevaDate() const;
+    void setSevaDate(const QString &newSevaDate);
+
+
+
+    const QString &datees() const;
+    void setDatees(const QString &newDatees);
+
+    const QString &reciptNumber() const;
+    void setReciptNumber(const QString &newReciptNumber);
+
 public slots:
     void setSevaTime(const QTime &newSevaTime);
     void setNote(const QString &newNote);
@@ -60,7 +74,7 @@ public slots:
     void setRashi(const QList<QString> &newRashi);
     void setsevaValueNameList(const QList<QString> &newsevaValueNameList);
     //    void catchdatafomdbseva(QJsonObject data,QJsonObject data2,QJsonObject data3,QJsonObject data4,QJsonObject data5,QJsonObject data6);
-    //    void userInformationDate(QDate e_date);
+    //    void userInformationDate(QString e_date);
     //    void userInformationEmail (QString e_email);
     //    void userInformationGotra (QList<QString> e_gotra);
     //    void userInformationMobile (QString e_mobile);
@@ -92,6 +106,15 @@ signals:
 
     void extraPriceChanged();
 
+    void countOfPeopleChanged();
+
+    void sevaDateChanged();
+
+
+    void dateesChanged();
+
+    void reciptNumberChanged();
+
 private:
     QString  m_userName;
     QString  m_email;
@@ -103,10 +126,11 @@ private:
     QList <QString>  m_rashi;
     unsigned  m_sevaPrice;
     unsigned m_extraPrice;
-    QDate  m_sevaDate;
+    unsigned m_countOfPeople;
+    QString  m_sevaDate;
     QTime  m_sevaTime;
     QString  m_note;
-    QDate m_datees;
+    QString m_datees;
     QList <QString> m_sevalist;
     QList<QString> m_sevaValueNameList;
     QList<QStringList> m_sevaInputList;
@@ -126,12 +150,15 @@ private:
     Q_PROPERTY(QString note READ note WRITE setNote NOTIFY noteChanged)
     Q_PROPERTY(QList<QString> sevalist READ sevalist WRITE setSevalist NOTIFY sevalistChanged)
     Q_PROPERTY(QList<QString> sevaValueNameList READ sevaValueNameList WRITE setsevaValueNameList NOTIFY sevaValueNameListChanged)
-
     Q_PROPERTY(QList<QStringList> sevaInputList READ sevaInputList WRITE setSevaInputList NOTIFY sevaInputListChanged)
     Q_PROPERTY(QStringList sevaInputIndex READ sevaInputIndex WRITE setSevaInputIndex NOTIFY sevaInputIndexChanged)
     Q_PROPERTY(QStringList sevaDataFromqml READ sevaDataFromqml WRITE setSevaDataFromqml NOTIFY sevaDataFromqmlChanged)
     Q_PROPERTY(QString sevaDataTemp READ sevaDataTemp WRITE setSevaDataTemp NOTIFY sevaDataTempChanged)
     Q_PROPERTY(unsigned extraPrice READ extraPrice WRITE setExtraPrice NOTIFY extraPriceChanged)
+    Q_PROPERTY(unsigned countOfPeople READ countOfPeople WRITE setCountOfPeople NOTIFY countOfPeopleChanged)
+    Q_PROPERTY(QString sevaDate READ sevaDate WRITE setSevaDate NOTIFY sevaDateChanged)
+    Q_PROPERTY(QString datees READ datees WRITE setDatees NOTIFY dateesChanged)
+    Q_PROPERTY(QString reciptNumber READ reciptNumber WRITE setReciptNumber NOTIFY reciptNumberChanged)
 };
 
 #endif // SEVABOOKINGVIEWMODEL_H

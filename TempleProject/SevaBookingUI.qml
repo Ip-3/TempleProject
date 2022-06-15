@@ -265,7 +265,7 @@ Item {
                                             id: receiptop
                                             anchors.fill: parent
                                             clip: true
-                                            text: ""
+                                            text: propertyvar.reciptNumber
                                             font.pointSize: 10
                                             anchors.verticalCenter:  parent.verticalCenter
                                             font.family: "cursive"
@@ -360,7 +360,7 @@ Item {
                                             id: sevanameop
                                             text:""
                                             //                                            clip: true
-//                                            wrapMode: sevanameop.text
+                                            //                                            wrapMode: sevanameop.text
                                             font.pointSize: 10
                                             font.family: "cursive"
                                             anchors.verticalCenter:  parent.verticalCenter
@@ -839,7 +839,7 @@ Item {
                                         TextInput {
                                             id: countop
                                             clip: true
-                                            text: ""
+                                            text: propertyvar.countOfPeople
                                             font.pointSize: 10
                                             anchors.fill: parent
                                             anchors.verticalCenter:  parent.verticalCenter
@@ -1142,11 +1142,10 @@ Item {
                                     //                                    propertyvar.sevalist = sevanameop.text
                                     //                                                                        propertyvar.nakshatra = nakshatraop.text;
                                     //                                                                        propertyvar.sevaPrice = sevachargesop.text;
-                                    //                                    propertyvar.sevaDate = sevadaterectop.text;
+                                    propertyvar.sevaDate = sevadaterectop.text;
                                     //                                    propertyvar.sevaTime = sevatimeop.text;
                                     //                                    QString date_string_on_db  "20/12/2015";
-                                    //                                    QDate Date = QDate::fromString(date_string_on_db,"dd/MM/yyyy");
-                                    //                                    propertyvar.dateop = datees.text;
+                                    propertyvar.datees = dateop.text;
                                     //                                                                        propertyvar.gotra = gotraop.text;
                                     //                                                                        propertyvar.rashi = rashiop.text;
                                     //                                                                        propertyvar.banklist = banklistop.text;
