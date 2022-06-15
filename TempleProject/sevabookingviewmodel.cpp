@@ -366,6 +366,11 @@ const QString &SevaBookingViewModel::sevaDataTemp() const
     return m_sevaDataTemp;
 }
 
+void SevaBookingViewModel::sevaInputListClear()
+{
+    m_sevaInputList.clear();
+}
+
 void SevaBookingViewModel::setSevaDataTemp(const QString &newSevaDataTemp)
 {
     if (m_sevaDataTemp == newSevaDataTemp)

@@ -250,6 +250,7 @@ Item {
                                         Text {
                                             id: receiptid
                                             text: "Receipt Number"
+                                            anchors.centerIn: parent
                                             anchors.verticalCenter:  parent.verticalCenter
                                             font.pointSize: 10
                                             font.family: "cursive"
@@ -279,6 +280,7 @@ Item {
                                         Text {
                                             id: dateid
                                             text: "Date"
+                                            anchors.centerIn: parent
                                             font.pointSize: 10
                                             font.family: "cursive"
                                             anchors.verticalCenter:  parent.verticalCenter
@@ -306,6 +308,7 @@ Item {
                                             anchors.fill: parent
                                             text:dateString
                                             clip: true
+                                            anchors.centerIn: parent
                                             font.pointSize: 10
                                             anchors.verticalCenter:  parent.verticalCenter
                                             font.family: "cursive"
@@ -346,6 +349,7 @@ Item {
                                         Text {
                                             id: sevanameip
                                             text: "Seva Name"
+                                            anchors.centerIn: parent
                                             font.pointSize: 10
                                             anchors.verticalCenter:  parent.verticalCenter
                                             font.family: "cursive"
@@ -359,6 +363,8 @@ Item {
                                         Text {
                                             id: sevanameop
                                             text:""
+                                            width:sevanamerect02.width
+                                            wrapMode: Text.Wrap
                                             //                                            clip: true
                                             //                                            wrapMode: sevanameop.text
                                             font.pointSize: 10
@@ -374,6 +380,7 @@ Item {
                                         Text {
                                             id: mobileid
                                             text: "Mobile Number"
+                                            anchors.centerIn: parent
                                             font.pointSize: 10
                                             anchors.verticalCenter:  parent.verticalCenter
                                             font.family: "cursive"
@@ -400,6 +407,7 @@ Item {
                                         Text {
                                             id: nameid
                                             text: "Name"
+                                            anchors.centerIn: parent
                                             font.pointSize: 10
                                             font.family: "cursive"
                                             anchors.verticalCenter:  parent.verticalCenter
@@ -416,6 +424,7 @@ Item {
                                             clip: true
                                             anchors.fill: parent
                                             text:propertyvar.userName
+                                            anchors.centerIn: parent
                                             font.pointSize: 10
                                             anchors.verticalCenter:  parent.verticalCenter
                                             font.family: "cursive"
@@ -429,6 +438,7 @@ Item {
                                         Text {
                                             id: nakshatraid
                                             text: "Nakshatra"
+                                            anchors.centerIn: parent
                                             anchors.verticalCenter:  parent.verticalCenter
                                             font.pointSize: 10
                                             font.family: "cursive"
@@ -472,6 +482,7 @@ Item {
                                         Text {
                                             id: gotraid
                                             text: "Gothra"
+                                            anchors.centerIn: parent
                                             font.pointSize: 10
                                             font.family: "cursive"
                                             anchors.verticalCenter:  parent.verticalCenter
@@ -516,6 +527,7 @@ Item {
                                         Text {
                                             id: sevachargesid
                                             text: "Seva Charges"
+                                            anchors.centerIn: parent
                                             font.pointSize: 10
                                             anchors.verticalCenter:  parent.verticalCenter
                                             font.family: "cursive"
@@ -558,6 +570,7 @@ Item {
                                         Text {
                                             id: extraid
                                             text: "Extra"
+                                            anchors.centerIn: parent
                                             font.pointSize: 10
                                             anchors.verticalCenter:  parent.verticalCenter
                                             font.family: "cursive"
@@ -585,6 +598,7 @@ Item {
                                         Text {
                                             id: rashiid
                                             text: "Rashi"
+                                            anchors.centerIn: parent
                                             font.pointSize: 10
                                             font.family: "cursive"
                                             anchors.verticalCenter:  parent.verticalCenter
@@ -629,6 +643,7 @@ Item {
                                         Text {
                                             id: paymenttypeid
                                             text: "Payment type"
+                                            anchors.centerIn: parent
                                             font.pointSize: 10
                                             font.family: "cursive"
                                             anchors.verticalCenter:  parent.verticalCenter
@@ -671,6 +686,7 @@ Item {
                                         Text {
                                             id: banklistid
                                             text: "Bank List"
+                                            anchors.centerIn: parent
                                             anchors.verticalCenter:  parent.verticalCenter
                                             font.pointSize: 10
                                             font.family: "cursive"
@@ -711,6 +727,7 @@ Item {
                                         Text {
                                             id: sevadaterectid
                                             text: "Seva Date"
+                                            anchors.centerIn: parent
                                             font.pointSize: 10
                                             anchors.verticalCenter:  parent.verticalCenter
                                             font.family: "cursive"
@@ -772,6 +789,7 @@ Item {
                                             id: sevatimerid
                                             text: "Seva Time"
                                             font.pointSize: 10
+                                            anchors.centerIn: parent
                                             anchors.verticalCenter:  parent.verticalCenter
                                             font.family: "cursive"
                                         }
@@ -797,6 +815,7 @@ Item {
                                         Text {
                                             id: noteid
                                             text: "Note"
+                                            anchors.centerIn: parent
                                             font.pointSize: 10
                                             font.family: "cursive"
                                             anchors.verticalCenter:  parent.verticalCenter
@@ -825,6 +844,7 @@ Item {
                                         Text {
                                             id: countid
                                             text: "Count"
+                                            anchors.centerIn: parent
                                             font.pointSize: 10
                                             font.family: "cursive"
                                             anchors.verticalCenter:  parent.verticalCenter
@@ -1061,6 +1081,10 @@ Item {
                                 palette.buttonText:palletbuttonbackgroundcolour
                                 onClicked:
                                 {
+                                    propertyvar.sevaInputListClear()
+                                    sevainlist.model=propertyvar.sevaInputList
+                                    scount=0;
+
                                     //                                    receiptop.text = ""
                                     //                                    dateop.text = ""
                                     //                                    sevanameop.text = ""

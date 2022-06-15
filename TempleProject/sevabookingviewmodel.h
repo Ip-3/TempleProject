@@ -39,6 +39,7 @@ public:
     const QString &sevaDataTemp() const;
 
 
+
     const unsigned &extraPrice() const;
     void setExtraPrice(const unsigned &newExtraPrice);
 
@@ -73,6 +74,8 @@ public slots:
     void setBanklist(const QList<QString> &newBanklist);
     void setRashi(const QList<QString> &newRashi);
     void setsevaValueNameList(const QList<QString> &newsevaValueNameList);
+    void sevaInputListClear();
+
     //    void catchdatafomdbseva(QJsonObject data,QJsonObject data2,QJsonObject data3,QJsonObject data4,QJsonObject data5,QJsonObject data6);
     //    void userInformationDate(QString e_date);
     //    void userInformationEmail (QString e_email);
