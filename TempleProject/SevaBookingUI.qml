@@ -38,6 +38,8 @@ Item {
     property bool clickk2 :false
     property var locale: Qt.locale()
     property date currentDate: new Date()
+    property int scount:0
+    property int totamt:0
     property string dateString
     property color backgroundcolour:"#ffffff"
     property color comboboxbackgroundcolour:"#ffe6cd"
@@ -45,7 +47,7 @@ Item {
     property color databoxbackgroundcolour:"#ffb267"
     property color listviewbackgroundcolour:"#ff9834"
     property color borderbackgroundcolour:"#ff9834"
-    property color palletbuttonbackgroundcolour:"#e77200"
+    property color palletbuttonbackgroundcolour:"#090909"
     Rectangle
     {
         id:mainRectangle
@@ -357,11 +359,12 @@ Item {
                                         Text {
                                             id: sevanameop
                                             text:""
-                                            clip: true
-                                            //                                            wrapMode: sevanameop.text
+                                            //                                            clip: true
+                                            wrapMode: sevanameop.text
                                             font.pointSize: 10
                                             font.family: "cursive"
                                             anchors.verticalCenter:  parent.verticalCenter
+
 
                                         }
                                     }
@@ -873,6 +876,7 @@ Item {
                                     Text {
                                         id: serialno01
                                         text:"Serial No"
+
                                     }
                                 }
                                 Rectangle{
@@ -884,6 +888,7 @@ Item {
                                     Text {
                                         id: nameno01
                                         text:"Name of the Seva"
+
                                     }
                                 }
                                 Rectangle{
@@ -895,6 +900,8 @@ Item {
                                     Text {
                                         id: amountno01
                                         text:"Amount"
+                                        //                                        text:propertyvar.sevaInputList[index][2]
+
                                     }
                                 }
                                 Rectangle{
@@ -906,6 +913,8 @@ Item {
                                     Text {
                                         id: personno01
                                         text:"Person"
+                                        //                                        text:propertyvar.sevaInputList[index][3]
+
                                     }
                                 }
                                 Rectangle{
@@ -917,6 +926,8 @@ Item {
                                     Text {
                                         id: additionalamtno01
                                         text:"Additional amount"
+                                        //                                        text:propertyvar.sevaInputList[index][4]
+
                                     }
                                 }
                                 Rectangle{
@@ -928,126 +939,107 @@ Item {
                                     Text {
                                         id: totalno01
                                         text:"Total"
+                                        //                                        text:propertyvar.sevaInputList[index][5]
+
                                     }
                                 }
                             }
-                            //                            ScrollView {
-                            //                                id:scrollviewid
-                            //                                anchors.fill: parent
-                            //                                //                                ScrollBar.vertical.policy: ScrollBar.AlwaysOn
-                            //                                //                                ScrollBar.horizontal.policy: ScrollBar.AlwaysOn
-                            //                                DelegateModel {
-                            //                                    id: visualModel
+                            Rectangle{
+                                id:sevainputre
+                                width:rowRectangle02.width-10
+                                height: columnRect02.height-10
+                                anchors.top:rowinRectangle.bottom
+                                anchors.topMargin: 2
+                                //                                color:"green"
 
-                            //                                    model:
-                            //                                        ListModel {
-                            //                                        ListElement {
-                            ////                                            SerialNo: receiptop.text
-                            //                                            SerialNo: "1"
-                            //                                        }
-                            //                                        ListElement {
-                            ////                                            Nameoftheseva: sevanameop.text
-                            //                                             Nameoftheseva: "Seva"
-                            //                                        }
-                            //                                        ListElement {
-                            ////                                            Amount:sevachargesop.text
-                            //                                             Amount:"A"
+                                ListView{
+                                    id:sevainlist
+                                    //                            width:rowRectangle02.width-10
+                                    //                            height: columnRect02.height-10
+                                    height:sevainputre.height-5
+                                    width:sevainputre.width-5
+                                    model:propertyvar.sevaInputList
+                                    delegate: Component{
+                                        RowLayout{
+                                            spacing: 2
 
-                            //                                        }
-                            //                                        ListElement {
-                            ////                                            Person:personno01.text
-                            //                                             Person:"11"
-                            //                                        }
-                            //                                        ListElement {
-                            ////                                            Additionalamount:extraop.text
-                            //                                            Additionalamount:"200"
-                            //                                        }
-                            //                                        ListElement {
-                            ////                                            TotalNo:totalno01.text
-                            //                                            TotalNo:"200"
+                                            Rectangle{
+                                                id:sevainrectangle01
+                                                width: columnRect02.width/10
+                                                height: columnRect02.height/8
+                                                border.width : 1
+                                                border.color:borderbackgroundcolour
+                                                Text {
+                                                    id: serialnoinput
+                                                    //                                            text:"Serial No"
+                                                    text:propertyvar.sevaInputList[index][0]
+                                                }
+                                            }
+                                            Rectangle{
+                                                id:sevainrectangle02
+                                                width: columnRect02.width/4
+                                                height: columnRect02.height/8
+                                                border.width : 1
+                                                border.color:borderbackgroundcolour
+                                                Text {
+                                                    id: namenoinput
+                                                    //                                            text:"Name of the Seva"
+                                                    text:propertyvar.sevaInputList[index][1]
+                                                }
 
-                            //                                        }
-                            //                                    }
-                            //                                    delegate:
-                            //                                        Row
-                            //                                    {
-
-                            //                                        spacing: 2
-                            //                                        id:scrollviewrow
-                            //                                        Rectangle{
-                            //                                            id:scrollrect01
-                            //                                            width: columnRect02.width/10
-                            //                                            height: columnRect02.height/8
-                            //                                            border.width : 1
-                            //                                            border.color: borderbackgroundcolour
-                            //                                            Text {
-                            //                                                id: serialno
-                            //                                                text:SerialNo
-                            //                                            }
-                            //                                        }
-                            //                                        Rectangle{
-                            //                                            id:scrollrect02
-                            //                                            width: columnRect02.width/4
-                            //                                            height: columnRect02.height/8
-                            //                                            border.width : 1
-                            //                                            border.color: borderbackgroundcolour
-                            //                                            Text {
-                            //                                                id: nameno
-                            //                                                text:Nameoftheseva
-                            //                                            }
-                            //                                        }
-                            //                                        Rectangle{
-                            //                                            id:scrollrect03
-                            //                                            width: columnRect02.width/10
-                            //                                            height: columnRect02.height/8
-                            //                                            border.width : 1
-                            //                                            border.color: borderbackgroundcolour
-                            //                                            Text {
-                            //                                                id: amountno
-                            //                                                text:Amount
-                            //                                            }
-                            //                                        }
-                            //                                        Rectangle{
-                            //                                            id:scrollrect04
-                            //                                            width: columnRect02.width/6
-                            //                                            height: columnRect02.height/8
-                            //                                            border.width : 1
-                            //                                            border.color: borderbackgroundcolour
-                            //                                            Text {
-                            //                                                id: personno
-                            //                                                text:Person
-                            //                                            }
-                            //                                        }
-                            //                                        Rectangle{
-                            //                                            id:scrollrect05
-                            //                                            width: columnRect02.width/4
-                            //                                            height: columnRect02.height/8
-                            //                                            border.width : 1
-                            //                                            border.color: borderbackgroundcolour
-                            //                                            Text {
-                            //                                                id: additionalamtno
-                            //                                                text:Additionalamount
-                            //                                            }
-                            //                                        }
-                            //                                        Rectangle{
-                            //                                            id:scrollrect06
-                            //                                            width: columnRect02.width/10
-                            //                                            height: columnRect02.height/8
-                            //                                            border.width : 1
-                            //                                            border.color: borderbackgroundcolour
-                            //                                            Text {
-                            //                                                id: totalno
-                            //                                                text:TotalNo
-                            //                                            }
-                            //                                        }
-                            //                                    }
-                            //                                }
-
-                            //                                ListView {
-                            //                                    anchors.fill: parent
-                            //                                    model: visualModel
-                            //                                }
-                            //                            }
+                                            }
+                                            Rectangle{
+                                                id:sevainRectangle03
+                                                width: columnRect02.width/10
+                                                height: columnRect02.height/8
+                                                border.width : 1
+                                                border.color:borderbackgroundcolour
+                                                Text {
+                                                    id: amountnoinput
+                                                    //                                            text:"Amount"
+                                                    text:propertyvar.sevaInputList[index][2]
+                                                }
+                                            }
+                                            Rectangle{
+                                                id:sevainRectangle04
+                                                width: columnRect02.width/6
+                                                height: columnRect02.height/8
+                                                border.width : 1
+                                                border.color:borderbackgroundcolour
+                                                Text {
+                                                    id: personno01
+                                                    //                                            text:"Person"
+                                                    text:propertyvar.sevaInputList[index][3]
+                                                }
+                                            }
+                                            Rectangle{
+                                                id:sevainRectangle05
+                                                width: columnRect02.width/4
+                                                height: columnRect02.height/8
+                                                border.width : 1
+                                                border.color:borderbackgroundcolour
+                                                Text {
+                                                    id: additionalamtno01
+                                                    //                                            text:"Additional amount"
+                                                    text:propertyvar.sevaInputList[index][4]
+                                                }
+                                            }
+                                            Rectangle{
+                                                id:sevainRectangle06
+                                                width: columnRect02.width/10
+                                                height: columnRect02.height/8
+                                                border.width : 1
+                                                border.color:borderbackgroundcolour
+                                                Text {
+                                                    id: totalno01
+                                                    //                                            text:"Total"
+                                                    text:propertyvar.sevaInputList[index][5]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     Rectangle{
@@ -1069,22 +1061,22 @@ Item {
                                 palette.buttonText:palletbuttonbackgroundcolour
                                 onClicked:
                                 {
-                                    //                                    receiptop.text("")
-                                    //                                    dateop.text("")
-                                    //                                    sevanameop.text("")
-                                    //                                    mobileop.text("")
-                                    //                                    nameop.text("")
-                                    //                                    nakshatraop.text("")
-                                    //                                    gotraop.text("")
-                                    //                                    sevachargesop.text("")
-                                    //                                    extraop.text("")
-                                    //                                    rashiop.text("")
-                                    //                                    bankop.text("")
-                                    //                                    banklistop.text("")
-                                    //                                    sevadaterectop.text("")
-                                    //                                    sevatimeop.text("")
-                                    //                                    noteop.text("")
-                                    //                                    countop.text("")
+                                    //                                    receiptop.text = ""
+                                    //                                    dateop.text = ""
+                                    //                                    sevanameop.text = ""
+                                    //                                    mobileop.text = ""
+                                    //                                    nameop.text= ""
+                                    ////                                    nakshatraop.model= ""
+                                    ////                                    gotraop.text= ""
+                                    //                                    sevachargesop.text= ""
+                                    //                                    extraop.text= ""
+                                    ////                                    rashiop.text= ""
+                                    ////                                    bankop.text= ""
+                                    ////                                    banklistop.text= ""
+                                    //                                    sevadaterectop.text= ""
+                                    //                                    sevatimeop.text= ""
+                                    //                                    noteop.text= ""
+                                    //                                    countop.text= ""
                                     console.log("Onclicked Clear ::::",clearButton.text)
                                 }
                             }
@@ -1108,6 +1100,29 @@ Item {
                                 palette.buttonText:palletbuttonbackgroundcolour
                                 onClicked:
                                 {
+                                    totamt =parseInt(sevachargesop.text)+parseInt(extraop.text)
+                                    console.log("totamtis=====",totamt);
+                                    if(sevanameop.text!=="" && sevachargesop.text!==""
+                                            && nameop.text!=="" && extraop.text!=="" ){
+                                        //                                    console.log(text1.text)
+                                        //                                        propertyvar.sevaDataTemp=serialnoinput.text
+                                        propertyvar.sevaDataTemp=scount+1;
+                                        //                                    console.log(text2.text)
+                                        propertyvar.sevaDataTemp=sevanameop.text
+                                        //                                    console.log(text3.text)
+                                        propertyvar.sevaDataTemp=sevachargesop.text
+                                        //                                    console.log(text4.text)
+                                        propertyvar.sevaDataTemp=nameop.text
+                                        //                                    console.log(text5.text)
+                                        propertyvar.sevaDataTemp=extraop.text
+                                        //                                    console.log(text6.text)
+                                        propertyvar.sevaDataTemp=totamt
+                                        propertyvar.sevaDataFromqml=propertyvar.sevaInputIndex
+                                        console.log(propertyvar.sevaInputIndex,"\n")
+                                        sevainlist.model=propertyvar.sevaInputList
+                                    }
+                                    scount++;
+
                                     console.log("Onclicked Add more::::",addmoreButton.text)
                                 }
                             }
@@ -1177,6 +1192,7 @@ Item {
                                 height: columnRect03.height/2
                                 text:"Last Transaction"
                                 palette.buttonText:palletbuttonbackgroundcolour
+
                                 onClicked:
                                 {
 

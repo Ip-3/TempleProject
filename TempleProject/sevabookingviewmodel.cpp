@@ -247,3 +247,59 @@ void SevaBookingViewModel::setsevaValueNameList(const QList<QString> &newsevaVal
     //    qDebug()<<Q_FUNC_INFO<<m_sevaValueNameList<<Qt::endl;
     emit sevaValueNameListChanged();
 }
+
+
+const QList<QStringList> &SevaBookingViewModel::sevaInputList() const
+{
+    return m_sevaInputList;
+}
+
+void SevaBookingViewModel::setSevaInputList(const QList<QStringList> &newSevaInputList)
+{
+    if (m_sevaInputList == newSevaInputList)
+        return;
+    m_sevaInputList = newSevaInputList;
+    emit sevaInputListChanged();
+}
+
+const QStringList &SevaBookingViewModel::sevaInputIndex() const
+{
+    return m_sevaInputIndex;
+}
+
+void SevaBookingViewModel::setSevaInputIndex(const QStringList &newSevaInputIndex)
+{
+    if (m_sevaInputIndex == newSevaInputIndex)
+        return;
+    m_sevaInputIndex = newSevaInputIndex;
+    emit sevaInputIndexChanged();
+}
+
+const QStringList &SevaBookingViewModel::sevaDataFromqml() const
+{
+    return m_sevaDataFromqml;
+}
+
+void SevaBookingViewModel::setSevaDataFromqml(const QStringList &newSevaDataFromqml)
+{
+//    if (m_sevaDataFromqml == newSevaDataFromqml)
+//        return;
+    m_sevaDataFromqml = newSevaDataFromqml;
+    m_sevaInputList.push_back(m_sevaInputIndex);
+    m_sevaInputIndex.clear();
+    emit sevaDataFromqmlChanged();
+}
+
+const QString &SevaBookingViewModel::sevaDataTemp() const
+{
+    return m_sevaDataTemp;
+}
+
+void SevaBookingViewModel::setSevaDataTemp(const QString &newSevaDataTemp)
+{
+//    if (m_sevaDataTemp == newSevaDataTemp)
+//        return;
+    m_sevaDataTemp = newSevaDataTemp;
+    m_sevaInputIndex.append(m_sevaDataTemp);
+    emit sevaDataTempChanged();
+}

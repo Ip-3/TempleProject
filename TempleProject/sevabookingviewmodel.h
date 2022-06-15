@@ -52,20 +52,33 @@ public:
     void setSevalist(const QList<QString> &newSevalist);
 
     const QList<QString> &sevaValueNameList() const;
-     void setsevaValueNameList(const QList<QString> &newsevaValueNameList);
+    void setsevaValueNameList(const QList<QString> &newsevaValueNameList);
+
+    const QList<QStringList> &sevaInputList() const;
+    void setSevaInputList(const QList<QStringList> &newSevaInputList);
+
+    const QStringList &sevaInputIndex() const;
+    void setSevaInputIndex(const QStringList &newSevaInputIndex);
+
+    const QStringList &sevaDataFromqml() const;
+    void setSevaDataFromqml(const QStringList &newSevaDataFromqml);
+
+    const QString &sevaDataTemp() const;
+    void setSevaDataTemp(const QString &newSevaDataTemp);
+
 
 public slots:
-//    void catchdatafomdbseva(QJsonObject data,QJsonObject data2,QJsonObject data3,QJsonObject data4,QJsonObject data5,QJsonObject data6);
-//    void userInformationDate(QDate e_date);
-//    void userInformationEmail (QString e_email);
-//    void userInformationGotra (QList<QString> e_gotra);
-//    void userInformationMobile (QString e_mobile);
-//    void userInformationNakshatra (QList<QString> e_nakshatra);
-//    void userInformationPersonName (QString e_PresonName);
-//    void nakshatraInformatoion(QList<QString> nakshatraList);
-//    void gotraInformatoion(QList<QString> gotraList);
-//    void rashiInformatoion(QList<QString> rashiList);
-//    void bankInformatoion(QList<QString> bankList);
+    //    void catchdatafomdbseva(QJsonObject data,QJsonObject data2,QJsonObject data3,QJsonObject data4,QJsonObject data5,QJsonObject data6);
+    //    void userInformationDate(QDate e_date);
+    //    void userInformationEmail (QString e_email);
+    //    void userInformationGotra (QList<QString> e_gotra);
+    //    void userInformationMobile (QString e_mobile);
+    //    void userInformationNakshatra (QList<QString> e_nakshatra);
+    //    void userInformationPersonName (QString e_PresonName);
+    //    void nakshatraInformatoion(QList<QString> nakshatraList);
+    //    void gotraInformatoion(QList<QString> gotraList);
+    //    void rashiInformatoion(QList<QString> rashiList);
+    //    void bankInformatoion(QList<QString> bankList);
 signals:
 
     void userNameChanged();
@@ -79,8 +92,12 @@ signals:
     void sevaTimeChanged();
     void noteChanged();
     void sevalistChanged();
-//    void sendqmldatatodatype(QString);
+    //    void sendqmldatatodatype(QString);
     void sevaValueNameListChanged();
+    void sevaInputListChanged();
+    void sevaInputIndexChanged();
+    void sevaDataFromqmlChanged();
+    void sevaDataTempChanged();
 
 private:
     QString  m_userName;
@@ -98,6 +115,10 @@ private:
     QDate m_datees;
     QList <QString> m_sevalist;
     QList<QString> m_sevaValueNameList;
+    QList<QStringList> m_sevaInputList;
+    QStringList m_sevaInputIndex;
+    QStringList m_sevaDataFromqml;
+    QString m_sevaDataTemp;
 
     Q_PROPERTY(QString userName READ userName WRITE setUserName NOTIFY userNameChanged)
     Q_PROPERTY(QString email READ email WRITE setEmail NOTIFY emailChanged)
@@ -111,6 +132,11 @@ private:
     Q_PROPERTY(QString note READ note WRITE setNote NOTIFY noteChanged)
     Q_PROPERTY(QList<QString> sevalist READ sevalist WRITE setSevalist NOTIFY sevalistChanged)
     Q_PROPERTY(QList<QString> sevaValueNameList READ sevaValueNameList WRITE setsevaValueNameList NOTIFY sevaValueNameListChanged)
+
+    Q_PROPERTY(QList<QStringList> sevaInputList READ sevaInputList WRITE setSevaInputList NOTIFY sevaInputListChanged)
+    Q_PROPERTY(QStringList sevaInputIndex READ sevaInputIndex WRITE setSevaInputIndex NOTIFY sevaInputIndexChanged)
+    Q_PROPERTY(QStringList sevaDataFromqml READ sevaDataFromqml WRITE setSevaDataFromqml NOTIFY sevaDataFromqmlChanged)
+    Q_PROPERTY(QString sevaDataTemp READ sevaDataTemp WRITE setSevaDataTemp NOTIFY sevaDataTempChanged)
 };
 
 #endif // SEVABOOKINGVIEWMODEL_H
