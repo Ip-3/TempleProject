@@ -6,20 +6,20 @@
 SevaBookingViewModel::SevaBookingViewModel(QObject *parent)
     : QObject{parent}
 {
-
-    connect(dbsvmf,&DBSevaTypeViewModelFirebase::userInformationPersonName,this,&SevaBookingViewModel::setUserName);
-    connect(dbsvmf,&DBSevaTypeViewModelFirebase::userInformationEmail,this,&SevaBookingViewModel::setEmail);
-    connect(dbsvmf,&DBSevaTypeViewModelFirebase::userInformationGotra,this,&SevaBookingViewModel::setGotra);
-    connect(dbsvmf,&DBSevaTypeViewModelFirebase::userInformationMobile,this,&SevaBookingViewModel::setPhoneNumber);
-    //connect(dbsvmf,&DBSevaTypeViewModelFirebase::userInformationNakshatra,this,&SevaBookingViewModel::setNakshatra);
-    connect(dbsvmf,&DBSevaTypeViewModelFirebase::nakshatraInformatoion,this,&SevaBookingViewModel::setNakshatra);
-    connect(dbsvmf,&DBSevaTypeViewModelFirebase::gotraInformatoion,this,&SevaBookingViewModel::setGotra);
-    connect(dbsvmf,&DBSevaTypeViewModelFirebase::rashiInformatoion,this,&SevaBookingViewModel::setRashi);
-    connect(dbsvmf,&DBSevaTypeViewModelFirebase::bankInformatoion,this,&SevaBookingViewModel::setBanklist);
-    connect(dbsvmf,&DBSevaTypeViewModelFirebase::sevaListInformation,this,&SevaBookingViewModel::setSevalist);
-    connect(dbsvmf,&DBSevaTypeViewModelFirebase::sevaNameListInformation,this,&SevaBookingViewModel::setsevaValueNameList);
-    connect(dbsvmf,&DBSevaTypeViewModelFirebase::sevaPriceInformation,this,&SevaBookingViewModel::setSevaPrice);
+    connect(dbsmi,SIGNAL(userInformationPersonName(QString)),this,SLOT(setUserName(QString)));
+    connect(dbsmi,SIGNAL(userInformationEmail(QString)),this,SLOT(setEmail(QString)));
+    connect(dbsmi,SIGNAL(userInformationGotra(QList<QString>)),this,SLOT(setGotra(QList<QString>)));
+    connect(dbsmi,SIGNAL(userInformationMobile(QString)),this,SLOT(setPhoneNumber(QString)));
+    //connect(dbsmi,SIGNAL(userInformationNakshatra()),this,SLOT(setNakshatra);
+    connect(dbsmi,SIGNAL(nakshatraInformatoion(QList<QString>)),this,SLOT(setNakshatra(QList<QString>)));
+    connect(dbsmi,SIGNAL(gotraInformatoion(QList<QString>)),this,SLOT(setGotra(QList<QString>)));
+    connect(dbsmi,SIGNAL(rashiInformatoion(QList<QString>)),this,SLOT(setRashi(QList<QString>)));
+    connect(dbsmi,SIGNAL(bankInformatoion(QList<QString>)),this,SLOT(setBanklist(QList<QString>)));
+    connect(dbsmi,SIGNAL(sevaListInformation(QList<QString>)),this,SLOT(setSevalist(QList<QString>)));
+    connect(dbsmi,SIGNAL(sevaNameListInformation(QList<QString>)),this,SLOT(setsevaValueNameList(QList<QString>)));
+    connect(dbsmi,SIGNAL(sevaPriceInformation(unsigned)),this,SLOT(setSevaPrice(unsigned)));
     m_sevaPrice =0;
+    m_extraPrice = 0;
 
     qDebug()<<Q_FUNC_INFO<<Qt::endl;
 
@@ -37,14 +37,14 @@ QString SevaBookingViewModel::datafromqml( QString data)
 {
     //    qDebug()<<Q_FUNC_INFO<<Qt::endl;
     //    qDebug()<<"Data from QML" <<data;
-    dbsvmf->processSevaList(data);
+    dbsmi->processSevaList(data);
     return "";
 }
 
 QString SevaBookingViewModel::pricedatafromqml(QString data)
 {
     qDebug()<<"Data from QML" <<data;
-    dbsvmf->processSevaPriceData(data);
+    dbsmi->processSevaPriceData(data);
     return "";
 
 }
@@ -248,6 +248,19 @@ void SevaBookingViewModel::setsevaValueNameList(const QList<QString> &newsevaVal
     emit sevaValueNameListChanged();
 }
 
+const unsigned &SevaBookingViewModel::extraPrice() const
+{
+    return m_extraPrice;
+}
+
+void SevaBookingViewModel::setExtraPrice(const unsigned &newExtraPrice)
+{
+    if (m_extraPrice == newExtraPrice)
+        return;
+    m_extraPrice = newExtraPrice;
+    emit extraPriceChanged();
+}
+
 
 const QList<QStringList> &SevaBookingViewModel::sevaInputList() const
 {
@@ -282,8 +295,8 @@ const QStringList &SevaBookingViewModel::sevaDataFromqml() const
 
 void SevaBookingViewModel::setSevaDataFromqml(const QStringList &newSevaDataFromqml)
 {
-//    if (m_sevaDataFromqml == newSevaDataFromqml)
-//        return;
+    //    if (m_sevaDataFromqml == newSevaDataFromqml)
+    //        return;
     m_sevaDataFromqml = newSevaDataFromqml;
     m_sevaInputList.push_back(m_sevaInputIndex);
     m_sevaInputIndex.clear();
@@ -297,8 +310,8 @@ const QString &SevaBookingViewModel::sevaDataTemp() const
 
 void SevaBookingViewModel::setSevaDataTemp(const QString &newSevaDataTemp)
 {
-//    if (m_sevaDataTemp == newSevaDataTemp)
-//        return;
+    //    if (m_sevaDataTemp == newSevaDataTemp)
+    //        return;
     m_sevaDataTemp = newSevaDataTemp;
     m_sevaInputIndex.append(m_sevaDataTemp);
     emit sevaDataTempChanged();

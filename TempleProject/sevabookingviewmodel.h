@@ -2,6 +2,7 @@
 #define SEVABOOKINGVIEWMODEL_H
 
 #include "dbsevatypemodelfirebase.h"
+#include "dbsevatypemodelinterface.h"
 #include <QObject>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -10,7 +11,9 @@
 class SevaBookingViewModel : public QObject
 {
     Q_OBJECT
-    DBSevaTypeViewModelFirebase *dbsvmf = new DBSevaTypeViewModelFirebase;
+
+    DBSevaTypeModelInterface *dbsmi = new DBSevaTypeModelFirebase;
+//    DBSevaTypeModelFirebase dbstmf;
 
 public:
     explicit SevaBookingViewModel(QObject *parent = nullptr);
@@ -19,55 +22,43 @@ public:
     Q_INVOKABLE QString pricedatafromqml( QString data);
 
     const QString &userName() const;
-    void setUserName(const QString &newUserName);
-
     const QString &email() const;
-    void setEmail(const QString &newEmail);
-
     const QString &phoneNumber() const;
-    void setPhoneNumber(const QString &newPhoneNumber);
-
     const QList<QString> &nakshatra() const;
-    void setNakshatra(const QList<QString> &newNakshatra);
-
     const QList<QString> &gotra() const;
-    void setGotra(const QList<QString> &newGotra);
-
     const QList<QString> &banklist() const;
-    void setBanklist(const QList<QString> &newBanklist);
-
     const QList<QString> &rashi() const;
-    void setRashi(const QList<QString> &newRashi);
-
     const unsigned &sevaPrice() const;
-    void setSevaPrice(const unsigned &newSevaPrice);
-
     const QTime &sevaTime() const;
-    void setSevaTime(const QTime &newSevaTime);
-
     const QString &note() const;
-    void setNote(const QString &newNote);
-
     const QList<QString> &sevalist() const;
-    void setSevalist(const QList<QString> &newSevalist);
-
     const QList<QString> &sevaValueNameList() const;
-    void setsevaValueNameList(const QList<QString> &newsevaValueNameList);
-
     const QList<QStringList> &sevaInputList() const;
-    void setSevaInputList(const QList<QStringList> &newSevaInputList);
-
     const QStringList &sevaInputIndex() const;
-    void setSevaInputIndex(const QStringList &newSevaInputIndex);
-
     const QStringList &sevaDataFromqml() const;
-    void setSevaDataFromqml(const QStringList &newSevaDataFromqml);
-
     const QString &sevaDataTemp() const;
-    void setSevaDataTemp(const QString &newSevaDataTemp);
 
+
+    const unsigned &extraPrice() const;
+    void setExtraPrice(const unsigned &newExtraPrice);
 
 public slots:
+    void setSevaTime(const QTime &newSevaTime);
+    void setNote(const QString &newNote);
+    void setSevaInputList(const QList<QStringList> &newSevaInputList);
+    void setSevaInputIndex(const QStringList &newSevaInputIndex);
+    void setSevaDataFromqml(const QStringList &newSevaDataFromqml);
+    void setSevaDataTemp(const QString &newSevaDataTemp);
+    void setSevaPrice(const unsigned &newSevaPrice);
+    void setEmail(const QString &newEmail);
+    void setUserName(const QString &newUserName);
+    void setSevalist(const QList<QString> &newSevalist);
+    void setPhoneNumber(const QString &newPhoneNumber);
+    void setNakshatra(const QList<QString> &newNakshatra);
+    void setGotra(const QList<QString> &newGotra);
+    void setBanklist(const QList<QString> &newBanklist);
+    void setRashi(const QList<QString> &newRashi);
+    void setsevaValueNameList(const QList<QString> &newsevaValueNameList);
     //    void catchdatafomdbseva(QJsonObject data,QJsonObject data2,QJsonObject data3,QJsonObject data4,QJsonObject data5,QJsonObject data6);
     //    void userInformationDate(QDate e_date);
     //    void userInformationEmail (QString e_email);
@@ -99,6 +90,8 @@ signals:
     void sevaDataFromqmlChanged();
     void sevaDataTempChanged();
 
+    void extraPriceChanged();
+
 private:
     QString  m_userName;
     QString  m_email;
@@ -109,6 +102,7 @@ private:
     QList <QString>  m_banklist;
     QList <QString>  m_rashi;
     unsigned  m_sevaPrice;
+    unsigned m_extraPrice;
     QDate  m_sevaDate;
     QTime  m_sevaTime;
     QString  m_note;
@@ -137,6 +131,7 @@ private:
     Q_PROPERTY(QStringList sevaInputIndex READ sevaInputIndex WRITE setSevaInputIndex NOTIFY sevaInputIndexChanged)
     Q_PROPERTY(QStringList sevaDataFromqml READ sevaDataFromqml WRITE setSevaDataFromqml NOTIFY sevaDataFromqmlChanged)
     Q_PROPERTY(QString sevaDataTemp READ sevaDataTemp WRITE setSevaDataTemp NOTIFY sevaDataTempChanged)
+    Q_PROPERTY(unsigned extraPrice READ extraPrice WRITE setExtraPrice NOTIFY extraPriceChanged)
 };
 
 #endif // SEVABOOKINGVIEWMODEL_H

@@ -16,19 +16,19 @@
 
 
 
-DBSevaTypeViewModelFirebase::DBSevaTypeViewModelFirebase()
+DBSevaTypeModelFirebase::DBSevaTypeModelFirebase()
 {
     qDebug()<<Q_FUNC_INFO<<Qt::endl;
     DataBaseAPI *dnapi = new DataBaseAPI;
-    connect(dnapi,&DataBaseAPI::catchSignalFromFirebase,this,&DBSevaTypeViewModelFirebase::catchdatafromapi);
+    connect(dnapi,&DataBaseAPI::catchSignalFromFirebase,this,&DBSevaTypeModelFirebase::catchdatafromapi);
 }
 
-DBSevaTypeViewModelFirebase::~DBSevaTypeViewModelFirebase()
+DBSevaTypeModelFirebase::~DBSevaTypeModelFirebase()
 {
     qDebug()<<Q_FUNC_INFO<<Qt::endl;
 }
 
-void DBSevaTypeViewModelFirebase::catchdatafromapi(QString data)
+void DBSevaTypeModelFirebase::catchdatafromapi(QString data)
 {
     qDebug()<<Q_FUNC_INFO<<Qt::endl;
     jsonDocument = QJsonDocument::fromJson(data.toUtf8());
@@ -49,7 +49,7 @@ void DBSevaTypeViewModelFirebase::catchdatafromapi(QString data)
     processData(PersonDetails, Sevadetails,NakshatraListdetails,GotraListDetails,BankListObject,RashiListDetails);
 }
 
-void DBSevaTypeViewModelFirebase::processData(QJsonObject PersonDetails, QJsonObject Sevadetails, QJsonObject NakshatraListdetails,QJsonObject GotraListDetails, QJsonObject BankListObject,QJsonObject RashiListDetails)
+void DBSevaTypeModelFirebase::processData(QJsonObject PersonDetails, QJsonObject Sevadetails, QJsonObject NakshatraListdetails,QJsonObject GotraListDetails, QJsonObject BankListObject,QJsonObject RashiListDetails)
 {
     qDebug()<<Q_FUNC_INFO<<Qt::endl;
     //        qDebug()<<"Person Data"<<PersonDetails;
@@ -159,7 +159,7 @@ void DBSevaTypeViewModelFirebase::processData(QJsonObject PersonDetails, QJsonOb
     }
 }
 
-void DBSevaTypeViewModelFirebase::processSevaList(QString data)
+void DBSevaTypeModelFirebase::processSevaList(QString data)
 {
     p_sevaListHit = data;
     QVariantMap :: Iterator it2;
@@ -184,7 +184,7 @@ void DBSevaTypeViewModelFirebase::processSevaList(QString data)
     }
 }
 
-void DBSevaTypeViewModelFirebase::processSevaPriceData(QString data)
+void DBSevaTypeModelFirebase::processSevaPriceData(QString data)
 {
     p_sevaCostHit = data;
     QVariantMap :: Iterator it2;

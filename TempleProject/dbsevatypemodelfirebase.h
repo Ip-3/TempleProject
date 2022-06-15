@@ -8,15 +8,15 @@
 #include <QJsonValue>
 #include "dbsevatypemodelinterface.h"
 
-class DBSevaTypeViewModelFirebase:public QObject, DBSevaTypeModelInterface
+class DBSevaTypeModelFirebase:public DBSevaTypeModelInterface
 {
 
     Q_OBJECT
     DBSEVATYPEMODELINTERFACE_H
 
     public:
-        DBSevaTypeViewModelFirebase();
-    ~DBSevaTypeViewModelFirebase();
+        DBSevaTypeModelFirebase();
+    ~DBSevaTypeModelFirebase();
 
     //    QString selectedSevaListData( QString data);
     void processData(QJsonObject data,QJsonObject data2,QJsonObject data3,QJsonObject data4,QJsonObject data5,QJsonObject data6);
@@ -38,7 +38,6 @@ signals:
     void rashiInformatoion(QList<QString> rashiList);
     void bankInformatoion(QList<QString> bankList);
     void sevaListInformation(QList<QString> listdata);
-
     void sevaNameListInformation(QList<QString> namelistdata);
     void sevaPriceInformation(unsigned priceData);
     //    void connecttoapi2(QJsonObject data);

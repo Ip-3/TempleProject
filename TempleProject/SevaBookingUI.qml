@@ -360,7 +360,7 @@ Item {
                                             id: sevanameop
                                             text:""
                                             //                                            clip: true
-                                            wrapMode: sevanameop.text
+//                                            wrapMode: sevanameop.text
                                             font.pointSize: 10
                                             font.family: "cursive"
                                             anchors.verticalCenter:  parent.verticalCenter
@@ -571,7 +571,7 @@ Item {
                                         TextInput {
                                             id: extraop
                                             clip: true
-                                            text: ""
+                                            text: propertyvar.extraPrice
                                             font.pointSize: 10
                                             anchors.fill: parent
                                             anchors.verticalCenter:  parent.verticalCenter
