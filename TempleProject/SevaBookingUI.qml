@@ -262,7 +262,7 @@ Item {
                                         id:receiptrect02;width:columnrectrow01.width/2.2;height:columnrectrow01.height/9;color:backgroundcolour
                                         border.color : borderbackgroundcolour
                                         border.width :1
-                                        TextInput {
+                                        Text {
                                             id: receiptop
                                             anchors.fill: parent
                                             clip: true

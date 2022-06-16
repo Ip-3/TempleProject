@@ -271,8 +271,9 @@ void SevaBookingViewModel::setDatees(const QString &newDatees)
     emit dateesChanged();
 //    QString Output = m_datees.section(' ', ' ' , 0);
 
-    QString desired = m_datees.mid(10, m_datees.indexOf("1"));
-    std::replace(desired.begin(), desired.end(), ',',' ');
+//    QString desired = m_datees.mid(10, m_datees.indexOf("1"));
+    QString desired = QDate::currentDate().toString("ddMMyyyy");
+//    std::replace(desired.begin(), desired.end(), ',',' ');
 //    std::replace(desired.begin(), desired.end(), ' ', '/');
 //    QString s = "C+";
     char ch = '/';
