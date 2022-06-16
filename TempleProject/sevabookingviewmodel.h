@@ -57,6 +57,21 @@ public:
     const QString &reciptNumber() const;
     void setReciptNumber(const QString &newReciptNumber);
 
+    const QString &sevaNametoCloud() const;
+    void setSevaNametoCloud(const QString &newSevaNametoCloud);
+
+    const QString &bankNametoCloud() const;
+    void setBankNametoCloud(const QString &newBankNametoCloud);
+
+    const QString &rashiNametoCloud() const;
+    void setRashiNametoCloud(const QString &newRashiNametoCloud);
+
+    const QString &gotraNametoCloud() const;
+    void setGotraNametoCloud(const QString &newGotraNametoCloud);
+
+    const QString &nakshatraNametoCloud() const;
+    void setNakshatraNametoCloud(const QString &newNakshatraNametoCloud);
+
 public slots:
     void setSevaTime(const QTime &newSevaTime);
     void setNote(const QString &newNote);
@@ -106,17 +121,21 @@ signals:
     void sevaInputIndexChanged();
     void sevaDataFromqmlChanged();
     void sevaDataTempChanged();
-
     void extraPriceChanged();
-
     void countOfPeopleChanged();
-
     void sevaDateChanged();
-
-
     void dateesChanged();
-
     void reciptNumberChanged();
+
+    void sevaNametoCloudChanged();
+
+    void bankNametoCloudChanged();
+
+    void rashiNametoCloudChanged();
+
+    void gotraNametoCloudChanged();
+
+    void nakshatraNametoCloudChanged();
 
 private:
     QString  m_userName;
@@ -141,6 +160,14 @@ private:
     QStringList m_sevaDataFromqml;
     QString m_sevaDataTemp;
 
+    ///////////////////////////////////////////////////////////////////////////
+
+    QString m_sevaNametoCloud;
+    QString m_bankNametoCloud;
+    QString m_rashiNametoCloud;
+    QString m_gotraNametoCloud;
+    QString m_nakshatraNametoCloud;
+
     Q_PROPERTY(QString userName READ userName WRITE setUserName NOTIFY userNameChanged)
     Q_PROPERTY(QString email READ email WRITE setEmail NOTIFY emailChanged)
     Q_PROPERTY(QString phoneNumber READ phoneNumber WRITE setPhoneNumber NOTIFY phoneNumberChanged)
@@ -162,6 +189,11 @@ private:
     Q_PROPERTY(QString sevaDate READ sevaDate WRITE setSevaDate NOTIFY sevaDateChanged)
     Q_PROPERTY(QString datees READ datees WRITE setDatees NOTIFY dateesChanged)
     Q_PROPERTY(QString reciptNumber READ reciptNumber WRITE setReciptNumber NOTIFY reciptNumberChanged)
+    Q_PROPERTY(QString sevaNametoCloud READ sevaNametoCloud WRITE setSevaNametoCloud NOTIFY sevaNametoCloudChanged)
+    Q_PROPERTY(QString bankNametoCloud READ bankNametoCloud WRITE setBankNametoCloud NOTIFY bankNametoCloudChanged)
+    Q_PROPERTY(QString rashiNametoCloud READ rashiNametoCloud WRITE setRashiNametoCloud NOTIFY rashiNametoCloudChanged)
+    Q_PROPERTY(QString gotraNametoCloud READ gotraNametoCloud WRITE setGotraNametoCloud NOTIFY gotraNametoCloudChanged)
+    Q_PROPERTY(QString nakshatraNametoCloud READ nakshatraNametoCloud WRITE setNakshatraNametoCloud NOTIFY nakshatraNametoCloudChanged)
 };
 
 #endif // SEVABOOKINGVIEWMODEL_H

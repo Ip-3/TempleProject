@@ -127,21 +127,21 @@ void DBSevaTypeModelFirebase::processData(QJsonObject PersonDetails, QJsonObject
     {
         p_keyvalues = it2.key();
         sevakeyslist.append(p_keyvalues);
-        qDebug()<<"Seva Keys List"<<sevakeyslist;
+        //        qDebug()<<"Seva Keys List"<<sevakeyslist;
         emit sevaListInformation(sevakeyslist);
     }
     for(it3=p_nakshatraListVariantmap.begin();it3!=p_nakshatraListVariantmap.end();it3++)
     {
         p_nakshatravalue = it3.value().toString();
         p_nakshatravaluelist.append(p_nakshatravalue);
-        qDebug()<<"Nakshatra List"<<p_nakshatravaluelist;
+        //        qDebug()<<"Nakshatra List"<<p_nakshatravaluelist;
         emit nakshatraInformatoion(p_nakshatravaluelist);
     }
     for(it4=p_gotraListVariantmap.begin();it4!=p_gotraListVariantmap.end();it4++)
     {
         p_gotravalue = it4.value().toString();
         p_gotravaluelist.append(p_gotravalue);
-        qDebug()<<"Gotra List"<<p_gotravaluelist;
+        //        qDebug()<<"Gotra List"<<p_gotravaluelist;
         emit gotraInformatoion(p_gotravaluelist);
 
     }
@@ -200,11 +200,123 @@ void DBSevaTypeModelFirebase::processSevaPriceData(QString data)
             {
                 auto aaa = it3.key();
                 if(aaa==p_sevaCostHit){
-                     priceInfo = it3.value().toUInt();
+                    priceInfo = it3.value().toUInt();
                 }
             }
             emit sevaPriceInformation(priceInfo);
         }
     }
+}
+
+void DBSevaTypeModelFirebase::processSevaNameData(QString data)
+{
+    c_SevaName = data;
+    qDebug()<<Q_FUNC_INFO<<c_SevaName<<Qt::endl;
+
+}
+
+void DBSevaTypeModelFirebase::processBankNameData(QString data)
+{
+    c_BankName =data;
+    qDebug()<<Q_FUNC_INFO<<c_SevaName<<Qt::endl;
+
+}
+
+void DBSevaTypeModelFirebase::processRashiNameData(QString data)
+{
+    c_RashiName = data;
+    qDebug()<<Q_FUNC_INFO<<c_RashiName<<Qt::endl;
+
+}
+
+void DBSevaTypeModelFirebase::processGotraameData(QString data)
+{
+    c_GotraName = data;
+    qDebug()<<Q_FUNC_INFO<<c_GotraName<<Qt::endl;
+
+}
+
+void DBSevaTypeModelFirebase::processNakshatraNameData(QString data)
+{
+    c_NakshatraName = data;
+    qDebug()<<Q_FUNC_INFO<<c_NakshatraName<<Qt::endl;
+
+}
+
+void DBSevaTypeModelFirebase::processSevaDateData(QString data)
+{
+    c_SevaDate = data;
+    qDebug()<<Q_FUNC_INFO<<c_SevaDate<<Qt::endl;
+
+}
+
+void DBSevaTypeModelFirebase::processSevaBillingDateData(QString data)
+{
+    c_SevaBillingDate = data;
+    qDebug()<<Q_FUNC_INFO<<c_SevaBillingDate<<Qt::endl;
+
+}
+
+void DBSevaTypeModelFirebase::processCountofPeopleData(unsigned data)
+{
+    c_CountOfPeople = data;
+    qDebug()<<Q_FUNC_INFO<<c_CountOfPeople<<Qt::endl;
+
+}
+
+void DBSevaTypeModelFirebase::processSevaTimeData(QTime data)
+{
+    c_SevaTime = data;
+    qDebug()<<Q_FUNC_INFO<<c_SevaTime<<Qt::endl;
+
+}
+
+void DBSevaTypeModelFirebase::processSevaCostData(unsigned data)
+{
+    c_SevaCost = data;
+    qDebug()<<Q_FUNC_INFO<<c_SevaCost<<Qt::endl;
+
+}
+
+void DBSevaTypeModelFirebase::processSevaExtraCostData(unsigned data)
+{
+    c_SevaExtraCost = data;
+    qDebug()<<Q_FUNC_INFO<<c_SevaExtraCost<<Qt::endl;
+
+}
+
+void DBSevaTypeModelFirebase::processSevaReciptNumberData(QString data)
+{
+    c_ReciptNumber = data;
+    qDebug()<<Q_FUNC_INFO<<c_ReciptNumber<<Qt::endl;
+
+}
+
+void DBSevaTypeModelFirebase::processUserNameData(QString data)
+{
+    c_UserName = data;
+    qDebug()<<Q_FUNC_INFO<<c_UserName<<Qt::endl;
+
+}
+
+void DBSevaTypeModelFirebase::processUserPhoneNumberData(QString data)
+{
+    c_UserPhoneNumber = data;
+    qDebug()<<Q_FUNC_INFO<<c_UserPhoneNumber<<Qt::endl;
+
+}
+
+void DBSevaTypeModelFirebase::processPaymentTypeData(QString data)
+{
+    c_PaymentType = data;
+    qDebug()<<Q_FUNC_INFO<<c_PaymentType<<Qt::endl;
+
+}
+
+void DBSevaTypeModelFirebase::processNoteData(QString data)
+{
+    c_Note = data;
+    qDebug()<<Q_FUNC_INFO<<c_Note<<Qt::endl;
+
 }
 

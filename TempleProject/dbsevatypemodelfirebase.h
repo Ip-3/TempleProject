@@ -22,6 +22,22 @@ class DBSevaTypeModelFirebase:public DBSevaTypeModelInterface
     void processData(QJsonObject data,QJsonObject data2,QJsonObject data3,QJsonObject data4,QJsonObject data5,QJsonObject data6);
     void processSevaList(QString data);
     void processSevaPriceData(QString data);
+    void processSevaNameData(QString data);
+    void processBankNameData(QString data);
+    void processRashiNameData(QString data);
+    void processGotraameData(QString data);
+    void processNakshatraNameData(QString data);
+    void processSevaDateData(QString data);
+    void processSevaBillingDateData(QString data);
+    void processCountofPeopleData(unsigned data);
+    void processSevaTimeData(QTime data);
+    void processSevaCostData(unsigned data);
+    void processSevaExtraCostData(unsigned data);
+    void processSevaReciptNumberData(QString data);
+    void processUserNameData(QString data);
+    void processUserPhoneNumberData(QString data);
+    void processPaymentTypeData(QString data);
+    void processNoteData(QString data);
 
 public slots:
     void catchdatafromapi(QString data);
@@ -102,6 +118,27 @@ private:
     QMap<QString,QVariant> subsevavalues;
 
     unsigned priceInfo;
+
+
+
+    QString c_SevaName;
+    QString c_BankName;
+    QString c_RashiName;
+    QString c_UserName;
+    QString c_NakshatraName;
+    QString c_GotraName;
+    QString c_ReciptNumber;
+    QString c_UserPhoneNumber;
+    QString c_PaymentType;
+    QString c_Note;
+    QString c_SevaDate;
+    QString c_SevaBillingDate;
+    QTime c_SevaTime;
+    unsigned c_SevaCost;
+    unsigned c_CountOfPeople;
+    unsigned c_SevaExtraCost;
+
+
 
 
 };

@@ -317,6 +317,7 @@ Item {
                                                 Component.onCompleted: {
                                                     dateString = currentDate.toLocaleDateString();
                                                     console.log((Date.fromLocaleDateString(dateString)))
+                                                    propertyvar.datees = dateop.text
                                                 }
                                             }
                                         }
@@ -1160,28 +1161,27 @@ Item {
                                 {
                                     console.log("Onclicked Submit::::",submitButtton.text)
                                     propertyvar.userName = nameop.text
-                                    //                                    propertyvar.phoneNumber = mobileop.text
-                                    //                                    propertyvar.note = noteop.text
-                                    //                                    propertyvar.reciptNumber = receiptop.text
-                                    //                                    propertyvar.sevalist = sevanameop.text
-                                    //                                                                        propertyvar.nakshatra = nakshatraop.text;
-                                    //                                                                        propertyvar.sevaPrice = sevachargesop.text;
+                                    propertyvar.sevaNametoCloud = sevanameop.text
+                                    propertyvar.phoneNumber = mobileop.text
+                                    propertyvar.note = noteop.text
+                                    propertyvar.reciptNumber = receiptop.text
+                                    propertyvar.sevaPrice = sevachargesop.text;
                                     propertyvar.sevaDate = sevadaterectop.text;
-                                    //                                    propertyvar.sevaTime = sevatimeop.text;
-                                    //                                    QString date_string_on_db  "20/12/2015";
+                                    propertyvar.sevaTime = sevatimeop.text;
                                     propertyvar.datees = dateop.text;
-                                    //                                                                        propertyvar.gotra = gotraop.text;
-                                    //                                                                        propertyvar.rashi = rashiop.text;
-                                    //                                                                        propertyvar.banklist = banklistop.text;
+                                    propertyvar.nakshatraNametoCloud = nakshatraop.currentValue;
+                                    propertyvar.gotraNametoCloud = gotraop.currentValue;
+                                    propertyvar.rashiNametoCloud = rashiop.currentValue;
+                                    propertyvar.bankNametoCloud = banklistop.currentValue;
 
 
-                                    console.log("User Name",propertyvar.userName)
-                                    console.log("Nakshatra ",propertyvar.nakshatra)
-                                    console.log("Gotra",propertyvar.gotra)
-                                    console.log("Date ",propertyvar.datees)
-                                    console.log("Seva Date",propertyvar.sevaDate)
-                                    console.log("Phone Number",propertyvar.phoneNumber)
-                                    console.log("Note",propertyvar.note)
+                                    //                                    console.log("User Name",propertyvar.userName)
+                                    //                                    console.log("Nakshatra ",propertyvar.nakshatra)
+                                    //                                    console.log("Gotra",propertyvar.gotra)
+                                    //                                    console.log("Date ",propertyvar.datees)
+                                    //                                    console.log("Seva Date",propertyvar.sevaDate)
+                                    //                                    console.log("Phone Number",propertyvar.phoneNumber)
+                                    //                                    console.log("Note",propertyvar.note)
 
                                 }
                             }

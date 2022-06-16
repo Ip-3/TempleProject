@@ -17,6 +17,25 @@ public:
     virtual void catchdatafromapi(QString data) = 0;
     virtual void processSevaPriceData(QString data) = 0;
 
+    virtual void processSevaNameData(QString data) = 0;
+    virtual void processBankNameData(QString data) = 0;
+    virtual void processRashiNameData(QString data) = 0;
+    virtual void processGotraameData(QString data) = 0;
+    virtual void processNakshatraNameData(QString data) = 0;
+    virtual void processSevaDateData(QString data) = 0;
+    virtual void processSevaBillingDateData(QString data) = 0;
+    virtual void processCountofPeopleData(unsigned data) = 0;
+    virtual void processSevaTimeData(QTime data) = 0;
+    virtual void processSevaCostData(unsigned data) = 0;
+    virtual void processSevaExtraCostData(unsigned data) = 0;
+    virtual void processSevaReciptNumberData(QString data) = 0;
+    virtual void processUserNameData(QString data) = 0;
+    virtual void processUserPhoneNumberData(QString data) = 0;
+    virtual void processPaymentTypeData(QString data) = 0;
+    virtual void processNoteData(QString data) = 0;
+
+
+
 
 };
 

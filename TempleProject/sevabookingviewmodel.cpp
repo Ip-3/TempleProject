@@ -50,7 +50,6 @@ QString SevaBookingViewModel::pricedatafromqml(QString data)
 
 const QString &SevaBookingViewModel::userName() const
 {
-    qDebug()<<Q_FUNC_INFO<<m_userName<<Qt::endl;
     return m_userName;
 }
 
@@ -61,12 +60,12 @@ void SevaBookingViewModel::setUserName(const QString &newUserName)
         return;
     qDebug()<<Q_FUNC_INFO<<m_userName<<Qt::endl;
     m_userName = newUserName;
+    dbsmi->processUserNameData(m_userName);
     emit userNameChanged();
 }
 
 const QString &SevaBookingViewModel::email() const
 {
-    qDebug()<<Q_FUNC_INFO<<m_email<<Qt::endl;
 
     return m_email;
 }
@@ -76,14 +75,13 @@ void SevaBookingViewModel::setEmail(const QString &newEmail)
 
     if (m_email == newEmail)
         return;
-    qDebug()<<Q_FUNC_INFO<<m_email<<Qt::endl;
     m_email = newEmail;
+    qDebug()<<Q_FUNC_INFO<<m_email<<Qt::endl;
     emit emailChanged();
 }
 
 const QString &SevaBookingViewModel::phoneNumber() const
 {
-    qDebug()<<Q_FUNC_INFO<<m_phoneNumber<<Qt::endl;
 
     return m_phoneNumber;
 }
@@ -96,12 +94,12 @@ void SevaBookingViewModel::setPhoneNumber(const QString &newPhoneNumber)
     m_phoneNumber = newPhoneNumber;
     qDebug()<<Q_FUNC_INFO<<m_phoneNumber<<Qt::endl;
     emit phoneNumberChanged();
+    dbsmi->processUserPhoneNumberData(m_phoneNumber);
+
 }
 
 const QList<QString> &SevaBookingViewModel::nakshatra() const
 {
-    qDebug()<<Q_FUNC_INFO<<m_nakshatra<<Qt::endl;
-
     return m_nakshatra;
 }
 
@@ -117,8 +115,6 @@ void SevaBookingViewModel::setNakshatra(const QList<QString> &newNakshatra)
 
 const QList<QString> &SevaBookingViewModel::gotra() const
 {
-    qDebug()<<Q_FUNC_INFO<<m_gotra<<Qt::endl;
-
     return m_gotra;
 }
 
@@ -134,8 +130,6 @@ void SevaBookingViewModel::setGotra(const QList<QString> &newGotra)
 
 const QList<QString> &SevaBookingViewModel::banklist() const
 {
-    qDebug()<<Q_FUNC_INFO<<m_banklist<<Qt::endl;
-
     return m_banklist;
 }
 
@@ -151,8 +145,6 @@ void SevaBookingViewModel::setBanklist(const QList<QString> &newBanklist)
 
 const QList<QString> &SevaBookingViewModel::rashi() const
 {
-    qDebug()<<Q_FUNC_INFO<<m_rashi<<Qt::endl;
-
     return m_rashi;
 }
 
@@ -162,14 +154,12 @@ void SevaBookingViewModel::setRashi(const QList<QString> &newRashi)
     if (m_rashi == newRashi)
         return;
     m_rashi = newRashi;
-    qDebug()<<Q_FUNC_INFO<<m_rashi<<Qt::endl;
+    qDebug() << Q_FUNC_INFO << m_rashi << Qt::endl;
     emit rashiChanged();
 }
 
 const unsigned &SevaBookingViewModel::sevaPrice() const
 {
-    qDebug()<<Q_FUNC_INFO<<m_sevaPrice<<Qt::endl;
-
     return m_sevaPrice;
 }
 
@@ -181,11 +171,12 @@ void SevaBookingViewModel::setSevaPrice(const unsigned &newSevaPrice)
     m_sevaPrice = newSevaPrice;
     qDebug()<<Q_FUNC_INFO<<m_sevaPrice<<Qt::endl;
     emit sevaPriceChanged();
+    dbsmi->processSevaCostData(m_sevaPrice);
+
 }
 
 const QTime &SevaBookingViewModel::sevaTime() const
 {
-    qDebug()<<Q_FUNC_INFO<<m_sevaTime<<Qt::endl;
 
     return m_sevaTime;
 }
@@ -198,11 +189,12 @@ void SevaBookingViewModel::setSevaTime(const QTime &newSevaTime)
     m_sevaTime = newSevaTime;
     qDebug()<<Q_FUNC_INFO<<m_sevaTime<<Qt::endl;
     emit sevaTimeChanged();
+    dbsmi->processSevaTimeData(m_sevaTime);
+
 }
 
 const QString &SevaBookingViewModel::note() const
 {
-    qDebug()<<Q_FUNC_INFO<<m_note<<Qt::endl;
 
     return m_note;
 }
@@ -215,11 +207,12 @@ void SevaBookingViewModel::setNote(const QString &newNote)
     m_note = newNote;
     qDebug()<<Q_FUNC_INFO<<m_note<<Qt::endl;
     emit noteChanged();
+    dbsmi->processNoteData(m_note);
+
 }
 
 const QList<QString> &SevaBookingViewModel::sevalist() const
 {
-    qDebug()<<Q_FUNC_INFO<<m_sevalist<<Qt::endl;
     return m_sevalist;
 }
 
@@ -235,7 +228,6 @@ void SevaBookingViewModel::setSevalist(const QList<QString> &newSevalist)
 
 const QList<QString> &SevaBookingViewModel::sevaValueNameList() const
 {
-    qDebug()<<Q_FUNC_INFO<<m_sevaValueNameList<<Qt::endl;
     return m_sevaValueNameList;
 }
 
@@ -244,7 +236,6 @@ void SevaBookingViewModel::setsevaValueNameList(const QList<QString> &newsevaVal
     if (m_sevaValueNameList == newsevaValueNameList)
         return;
     m_sevaValueNameList = newsevaValueNameList;
-    qDebug()<<Q_FUNC_INFO<<m_sevaValueNameList<<Qt::endl;
     emit sevaValueNameListChanged();
 }
 
@@ -255,11 +246,13 @@ const QString &SevaBookingViewModel::reciptNumber() const
 
 void SevaBookingViewModel::setReciptNumber(const QString &newReciptNumber)
 {
-//    if (m_reciptNumber == newReciptNumber)
-//        return;
-    m_reciptNumber = m_datees ;
+    if (m_reciptNumber == newReciptNumber)
+        return;
+    m_reciptNumber = newReciptNumber;
     qDebug()<<Q_FUNC_INFO<<m_reciptNumber<<Qt::endl;
     emit reciptNumberChanged();
+    dbsmi->processSevaReciptNumberData(m_reciptNumber);
+
 }
 
 const QString &SevaBookingViewModel::datees() const
@@ -274,7 +267,18 @@ void SevaBookingViewModel::setDatees(const QString &newDatees)
         return;
     m_datees = newDatees;
     qDebug()<<Q_FUNC_INFO<<m_datees<<Qt::endl;
+    dbsmi->processSevaBillingDateData(m_datees);
     emit dateesChanged();
+//    QString Output = m_datees.section(' ', ' ' , 0);
+
+    QString desired = m_datees.mid(10, m_datees.indexOf("1"));
+    std::replace(desired.begin(), desired.end(), ',',' ');
+//    std::replace(desired.begin(), desired.end(), ' ', '/');
+//    QString s = "C+";
+    char ch = '/';
+    desired.push_back(ch);
+    qDebug()<<"Edit"<<desired<<Qt::endl;
+    setReciptNumber(desired);
 }
 
 
@@ -291,6 +295,8 @@ void SevaBookingViewModel::setSevaDate(const QString &newSevaDate)
     m_sevaDate = newSevaDate;
     qDebug()<<Q_FUNC_INFO<<m_sevaDate<<Qt::endl;
     emit sevaDateChanged();
+    dbsmi->processSevaDateData(m_sevaDate);
+
 }
 
 const unsigned &SevaBookingViewModel::countOfPeople() const
@@ -303,7 +309,9 @@ void SevaBookingViewModel::setCountOfPeople(const unsigned &newCountOfPeople)
     if (m_countOfPeople == newCountOfPeople)
         return;
     m_countOfPeople = newCountOfPeople;
+    qDebug()<<Q_FUNC_INFO<<m_countOfPeople<<Qt::endl;
     emit countOfPeopleChanged();
+    dbsmi->processCountofPeopleData(m_countOfPeople);
 }
 
 const unsigned &SevaBookingViewModel::extraPrice() const
@@ -316,7 +324,10 @@ void SevaBookingViewModel::setExtraPrice(const unsigned &newExtraPrice)
     if (m_extraPrice == newExtraPrice)
         return;
     m_extraPrice = newExtraPrice;
+    qDebug()<<Q_FUNC_INFO<<m_extraPrice<<Qt::endl;
     emit extraPriceChanged();
+    dbsmi->processSevaExtraCostData(m_extraPrice);
+
 }
 
 
@@ -369,6 +380,83 @@ const QString &SevaBookingViewModel::sevaDataTemp() const
 void SevaBookingViewModel::sevaInputListClear()
 {
     m_sevaInputList.clear();
+}
+
+const QString &SevaBookingViewModel::nakshatraNametoCloud() const
+{
+    return m_nakshatraNametoCloud;
+}
+
+void SevaBookingViewModel::setNakshatraNametoCloud(const QString &newNakshatraNametoCloud)
+{
+    if (m_nakshatraNametoCloud == newNakshatraNametoCloud)
+        return;
+    m_nakshatraNametoCloud = newNakshatraNametoCloud;
+    qDebug()<<Q_FUNC_INFO<<m_nakshatraNametoCloud<<Qt::endl;
+    emit nakshatraNametoCloudChanged();
+    dbsmi->processNakshatraNameData(m_nakshatraNametoCloud);
+
+}
+
+const QString &SevaBookingViewModel::gotraNametoCloud() const
+{
+    return m_gotraNametoCloud;
+}
+
+void SevaBookingViewModel::setGotraNametoCloud(const QString &newGotraNametoCloud)
+{
+    if (m_gotraNametoCloud == newGotraNametoCloud)
+        return;
+    m_gotraNametoCloud = newGotraNametoCloud;
+    qDebug()<<Q_FUNC_INFO<<m_gotraNametoCloud<<Qt::endl;
+    emit gotraNametoCloudChanged();
+    dbsmi->processGotraameData(m_gotraNametoCloud);
+
+}
+
+const QString &SevaBookingViewModel::rashiNametoCloud() const
+{
+    return m_rashiNametoCloud;
+}
+
+void SevaBookingViewModel::setRashiNametoCloud(const QString &newRashiNametoCloud)
+{
+    if (m_rashiNametoCloud == newRashiNametoCloud)
+        return;
+    m_rashiNametoCloud = newRashiNametoCloud;
+    qDebug()<<Q_FUNC_INFO<<m_rashiNametoCloud<<Qt::endl;
+    dbsmi->processRashiNameData(m_rashiNametoCloud);
+    emit rashiNametoCloudChanged();
+}
+
+const QString &SevaBookingViewModel::bankNametoCloud() const
+{
+    return m_bankNametoCloud;
+}
+
+void SevaBookingViewModel::setBankNametoCloud(const QString &newBankNametoCloud)
+{
+    if (m_bankNametoCloud == newBankNametoCloud)
+        return;
+    m_bankNametoCloud = newBankNametoCloud;
+    qDebug()<<Q_FUNC_INFO<<m_bankNametoCloud<<Qt::endl;
+    dbsmi->processBankNameData(m_bankNametoCloud);
+    emit bankNametoCloudChanged();
+}
+
+const QString &SevaBookingViewModel::sevaNametoCloud() const
+{
+    return m_sevaNametoCloud;
+}
+
+void SevaBookingViewModel::setSevaNametoCloud(const QString &newSevaNametoCloud)
+{
+    if (m_sevaNametoCloud == newSevaNametoCloud)
+        return;
+    m_sevaNametoCloud = newSevaNametoCloud;
+    qDebug()<<Q_FUNC_INFO<<m_sevaNametoCloud<<Qt::endl;
+    emit sevaNametoCloudChanged();
+    dbsmi->processSevaNameData(m_sevaNametoCloud);
 }
 
 void SevaBookingViewModel::setSevaDataTemp(const QString &newSevaDataTemp)
